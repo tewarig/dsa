@@ -2,28 +2,20 @@
 using namespace std;
 
 
-void selection_sort(int arr[],int n)
+void insertion_sort(int arr[],int n)
 {
-    int i =0,j=0,min=0,pos=0;
-    for(i;i<n-1;i++)
+    int i,key,j;
+    for(i=0;i<n;i++)
     {
-        min = arr[i];
-        pos = i;
-        
-        for(j=i+1;j<n;j++)
+        key = arr[i];
+        j = i-1;
+        while(j>=0  && key < arr[j])
         {
-           if(arr[j]<min)
-           {
-               min= arr[j];
-               pos = j;
-               
-           }
+            arr[j+1] = arr[j];
+            j= j-1;
+            
         }
-        if(pos != i)
-        {
-            arr[pos] = arr[i];
-            arr[i] = min;
-        }
+        arr[j+1] = key;
     }
 }
 
@@ -36,7 +28,7 @@ int main()
     {
         cin>>arr[i];
     }
-    selection_sort(arr,n);
+    insertion_sort(arr,n);
     for(int i=0;i<n;i++)
     {
         cout<<arr[i]<<"\n";
