@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define ll_MAX 922337203685
+#define pb  push_back
+
+
+void primeSleve( ll n) {
+
+
+}
+
+bool isPrime(ll n)
+{
+    if (n == 1) return false;
+    for (ll i = 2; i <= sqrt(n); i++)
+    {
+        if (n % i == 0)
+        {
+            return false;
+
+        }
+    }
+    return true;
+}
+ll gcd(ll a, ll b)
+{
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
+}
+
+
+
+int main()
+{
+
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+
+
+
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+    int maxSoFar = INT_MIN , maxForNow = 0;
+    for (int i = 0; i < n; i++)
+
+    {
+        maxForNow = maxForNow + arr[i];
+        if (maxForNow > maxSoFar)
+        {
+            maxSoFar = maxForNow;
+
+        }
+        if (maxForNow < 0)
+        {
+            maxForNow = 0;
+        }
+    }
+    cout << maxSoFar;
+
+    return 0;
+
+
+}
